@@ -1,0 +1,14 @@
+name: Ma premiere CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dire bonjour
+        run: echo "Le pipeline vient de se declencher !"
