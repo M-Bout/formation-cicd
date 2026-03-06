@@ -1,0 +1,27 @@
+name: Ma premiere CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    steps:
+      #      - name: Dire bonjour
+      #        run: echo "Le pipeline vient de se declencher !"
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Configuration de .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restauration des dépendances
+        run: dotnet restore
+
+      - name: Compilation (Build)
+        run: dotnet build --no-restore
