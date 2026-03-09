@@ -20,6 +20,9 @@ jobs:
         with:
           dotnet-version: "9.0.x"
 
+      - name: Vérification du formatage (Linting)
+        run: dotnet format --verify-no-changes --verbosity normal
+
       - name: Restaurer les dépendances
         run: dotnet restore MonProjet.sln
 
