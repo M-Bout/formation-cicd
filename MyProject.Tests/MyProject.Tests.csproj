@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\formation-cicd\formation-cicd.csproj" />
+    <ProjectReference Include="..\formation-cicd.csproj" />
   </ItemGroup>
 
 </Project>
