@@ -20,11 +20,11 @@ jobs:
         with:
           dotnet-version: "9.0.x"
 
-      - name: Restauration des dépendances
-        run: dotnet restore
+      - name: Restaurer les dépendances
+        run: dotnet restore MonProjet.sln
 
       - name: Compilation (Build)
-        run: dotnet build --no-restore
+        run: dotnet build MonProjet.sln --no-restore
 
       - name: Exécution des Tests
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test MonProjet.sln --no-restore --verbosity normal
