@@ -25,3 +25,6 @@ jobs:
 
       - name: Compilation (Build)
         run: dotnet build --no-restore
+
+      - name: Exécution des Tests
+        run: dotnet test --no-restore --verbosity normal
