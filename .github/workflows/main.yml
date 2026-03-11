@@ -2,9 +2,13 @@ name: Ma premiere CI
 
 on:
   push:
-    branches: [main, feature/docker-integration]
+    branches:
+      - main
+      - "feature/**" # Déclenche pour feature/docker, feature/calculatrice, etc.
+      - "fix/**" # Déclenche pour toutes les branches de correction
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   verification:
