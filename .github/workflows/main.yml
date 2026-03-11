@@ -2,7 +2,7 @@ name: Ma premiere CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/docker-integration]
   pull_request:
     branches: [main]
 
