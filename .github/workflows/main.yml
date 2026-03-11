@@ -31,3 +31,6 @@ jobs:
 
       - name: Exécution des Tests
         run: dotnet test MonProjet.sln --no-restore --verbosity normal
+
+      - name: Construction de l'image Docker
+        run: docker build -t calculatrice-app-ci .
