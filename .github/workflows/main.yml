@@ -56,5 +56,5 @@ jobs:
           context: . # Où se trouve le Dockerfile (racine du projet)
           push: true # On dit au robot d'envoyer l'image après le build
           tags: | # On donne deux étiquettes à notre image
-            ghcr.io/${{ github.repository_owner }}/calculatrice-app:latest
-            ghcr.io/${{ github.repository_owner }}/calculatrice-app:${{ github.sha }}
+            ghcr.io/m-bout/calculatrice-app:latest
+            ghcr.io/m-bout/calculatrice-app:${{ github.sha }}
