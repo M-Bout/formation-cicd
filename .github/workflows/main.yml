@@ -27,7 +27,7 @@ jobs:
       - name: Configuration de .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "9.0.x"
+          dotnet-version: "8.0.x"
 
       - name: Vérification du formatage (Linting)
         run: dotnet format --verify-no-changes --verbosity normal
@@ -42,6 +42,7 @@ jobs:
         run: dotnet test MonProjet.sln --no-restore --verbosity normal
 
       - name: Connexion au registre GitHub (GHCR)
+        if: github.ref == 'refs/heads/main' #  1. CONDITIONNEL : On ne se connecte que si on est sur MAIN
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -51,6 +52,7 @@ jobs:
       #- name: Construction de l'image Docker
       #  run: docker build -t calculatrice-app-ci .
       - name: Build et Push de l'image
+        if: github.ref == 'refs/heads/main' # 2. CONDITIONNEL  :On ne pousse l'image que si on est sur MAIN
         uses: docker/build-push-action@v5
         with:
           context: . # Où se trouve le Dockerfile (racine du projet)
@@ -60,5 +62,6 @@ jobs:
             ghcr.io/m-bout/calculatrice-app:${{ github.sha }}
 
       - name: Deploy to Render
+        if: github.ref == 'refs/heads/main' # 3. CONDITIONNEL : On ne prévient Render que si on est sur MAIN
         run: |
           curl -f "${{ secrets.RENDER_DEPLOY_HOOK_CALCULATRICE }}"
