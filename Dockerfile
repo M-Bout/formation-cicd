@@ -13,7 +13,12 @@ COPY . ./
 RUN dotnet publish formation-cicd/formation-cicd.csproj -c Release -o out
 
 # 4. Créer l'image finale (plus légère) avec seulement le nécessaire pour l'exécution
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
+
+# On dit à .NET d'écouter sur le port 8080 (standard pour Docker/Cloud)
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+
 ENTRYPOINT ["dotnet", "formation-cicd.dll"]
