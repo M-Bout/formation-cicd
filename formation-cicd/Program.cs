@@ -5,7 +5,7 @@ var app = builder.Build();
 
 var calculatrice = new Calculatrice(); // On utilise ta classe de Calculatrice.cs
 
-app.MapGet("/", () => "Serveur Web de M-Bout prêt !");
+app.MapGet("/", () => "Calculatrice de M-Bout v2 - CI/CD OK !");
 
 app.MapGet("/somme", (int a, int b) =>
 {

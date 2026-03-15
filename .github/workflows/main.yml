@@ -58,3 +58,7 @@ jobs:
           tags: | # On donne deux étiquettes à notre image
             ghcr.io/m-bout/calculatrice-app:latest
             ghcr.io/m-bout/calculatrice-app:${{ github.sha }}
+
+      - name: Deploy to Render
+        run: |
+          curl -f "${{ secrets.RENDER_DEPLOY_HOOK_CALCULATRICE }}"
